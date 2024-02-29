@@ -1,6 +1,8 @@
 <?php
 
-$pwdLength =$_GET['length'] ;
+
+session_start();
+$pwdLength =$_GET['length'] ?? null ;
 $pwdLength =intval($pwdLength);
 
 function pwdGen($pwdLength){
@@ -16,7 +18,10 @@ function pwdGen($pwdLength){
     $pwdArr[] = $singleC;      
 }
 $pwd = implode($pwdArr);
-return $pwd;
+$_SESSION['pwd'] = $pwd;
+
+header("Location: ./success.php");
+
 
 }
 

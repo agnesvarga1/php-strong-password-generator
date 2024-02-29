@@ -1,4 +1,6 @@
-<?php include __DIR__."/partials/function.php"?>
+<?php include __DIR__."/partials/function.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,20 +10,16 @@
     <title>Pwd Generator</title>
 </head>
 <body class="p-5">
-<form  action="index.php" method="GET">
+  <h1 class="text-center" >Password generator </h1>
+  <div class="container w-50">
 
-  <div class="mb-3">
-    <label for="length" class="form-label">Lungezza password</label>
+<form class="row justify-content-start align-items-center" action="index.php" method="GET">
+
+  <div class="mb-3 col-6">
+    <label for="length" class="form-label " >Lungezza password</label>
     <input type="number" class="form-control " id="length" name="length" aria-describedby="emailHelp">
   </div>
-  <?php if(isset($pwdLength) && $pwdLength !== 0){ ?>
-    <div class="m-5 p-3">
-    <span>Generated password:</span>
-   <span><?php echo pwdGen($pwdLength) ?> </span>
-    </div>
-  
 
- <?php } ?>
 <!--   
     <span>Consenti ripetizioni uno o piu caratteri</span>
 
@@ -57,7 +55,17 @@
     Numeri
   </label>
 </div> -->
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary col-1">Submit</button>
 </form>
+
+</div>
+<!-- <?php if(isset($pwdLength) && $pwdLength !== 0){ ?>
+    <div class="m-5 p-3">
+    <span>Generated password:</span>
+   <span><?php echo pwdGen($pwdLength) ?> </span>
+    </div>
+  
+
+ <?php } ?> -->
 </body>
 </html>
