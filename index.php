@@ -1,6 +1,14 @@
 <?php include __DIR__."/partials/function.php";
+if(isset($_GET['length'])){
+  $pwdLength =$_GET['length'] ?? null ;
+  $pwdLength =intval($pwdLength);
+  $pwdRep = $_GET['pwdrepeat'] ?? null;
 
-?>
+  pwdGen($pwdLength,$pwdRep);
+  
+}
+  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,27 +25,30 @@
 
   <div class="mb-3 col-6">
     <label for="length" class="form-label " >Lungezza password</label>
-    <input type="number" class="form-control " id="length" name="length" aria-describedby="emailHelp">
+    <input type="number" class="form-control " id="length" name="length">
   </div>
+  <div class="d-flex gap-2">
+  <span>Consenti ripetizioni uno o piu caratteri?</span>
 
-<!--   
-    <span>Consenti ripetizioni uno o piu caratteri</span>
+<div class="form-check">
 
-  <div class="form-check">
-  
-  <input class="form-check-input" type="radio" name="pwdrepeat" id="pwdrep" value="1">
-  <label class="form-check-label" for="pwdrep">
-    Si
-  </label>
+<input class="form-check-input" type="radio" name="pwdrepeat" id="pwdrep" value="1" checked>
+<label class="form-check-label" for="pwdrep">
+  Si
+</label>
 </div>
 <div class="form-check">
   
-  <input class="form-check-input" type="radio" name="pwdrepeat" id="pwdrep" value="0">
+  <input class="form-check-input" type="radio" name="pwdrepeat" id="pwdrep" value="0" >
   <label class="form-check-label" for="pwdrep">
    No
   </label>
 </div>
-<div class="form-check">
+  </div>
+
+
+
+<div class="form-check mt-2">
   <input class="form-check-input" type="checkbox" value="1" id="letters">
   <label class="form-check-label" for="letters">
     Letteri
@@ -54,8 +65,8 @@
   <label class="form-check-label" for="nums">
     Numeri
   </label>
-</div> -->
-  <button type="submit" class="btn btn-primary col-1">Submit</button>
+</div> 
+  <button type="submit" class="btn btn-primary col-1 mt-2">Submit</button>
 </form>
 
 </div>

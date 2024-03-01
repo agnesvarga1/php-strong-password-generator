@@ -2,24 +2,32 @@
 
 
 session_start();
-$pwdLength =$_GET['length'] ?? null ;
-$pwdLength =intval($pwdLength);
 
-function pwdGen($pwdLength){
+
+function pwdGen($pwdLength , $pwdRep){
+
   $digits    = (range('0', '9'));
   $lowercase = (range('a', 'z'));
   $uppercase = (range('A', 'Z')); 
   $special   = (str_split('!@#$%^&*_+=?/'));
   $combined  = array_merge($digits, $lowercase, $uppercase, $special);
   $pwdArr = [];
-  for($i=0;$i < $pwdLength;$i++){
+   while(count($pwdArr) < $pwdLength ){
+ 
     $randomPosition = rand(0,count($combined)-1);
     $singleC = $combined[$randomPosition];
-    $pwdArr[] = $singleC;      
-}
+    if($pwdRep == true){
+      $pwdArr[] = $singleC; 
+    } elseif ($pwdRep == false && !in_array($singleC, $pwdArr)){
+    $pwdArr[] = $singleC;   
+   }
+    
+   }
+   
+
 $pwd = implode($pwdArr);
 $_SESSION['pwd'] = $pwd;
-
+$_SESSION['rep'] = $pwdRep;
 header("Location: ./success.php");
 
 
