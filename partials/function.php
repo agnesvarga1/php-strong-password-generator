@@ -1,16 +1,12 @@
 <?php
 
-
 session_start();
 
+function pwdGen($pwdLength , $pwdRep,$combined){
 
-function pwdGen($pwdLength , $pwdRep){
 
-  $digits    = (range('0', '9'));
-  $lowercase = (range('a', 'z'));
-  $uppercase = (range('A', 'Z')); 
-  $special   = (str_split('!@#$%^&*_+=?/'));
-  $combined  = array_merge($digits, $lowercase, $uppercase, $special);
+
+  
   $pwdArr = [];
    while(count($pwdArr) < $pwdLength ){
  
@@ -24,10 +20,9 @@ function pwdGen($pwdLength , $pwdRep){
     
    }
    
-
 $pwd = implode($pwdArr);
 $_SESSION['pwd'] = $pwd;
-$_SESSION['rep'] = $pwdRep;
+$_SESSION['com'] = $combined;
 header("Location: ./success.php");
 
 

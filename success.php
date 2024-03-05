@@ -1,6 +1,7 @@
 <?php 
 session_start();
-var_dump($_SESSION['rep']);
+//var_dump($_SESSION['com']);
+
 
 
 
@@ -14,7 +15,7 @@ var_dump($_SESSION['rep']);
     <title>Success Pwd</title>
 </head>
 <body>
-    <div class="d-flex align-items-center gap-5">
+    <div class="d-flex align-items-center gap-5 justify-content-center container p-5">
     <h3 class="" >Here we go, ur password:</h3>
     <h2 class="text-success"><?php echo $_SESSION['pwd'] ?></h2> 
     </div>
